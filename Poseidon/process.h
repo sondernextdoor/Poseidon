@@ -35,8 +35,8 @@ namespace Process {
 
 		if (LIST_ENTRY* ModuleEntry{ PsGetProcessPeb(eProcess)->Ldr->InLoadOrderModuleList.Flink }) {
 			Data->Process.Size = CONTAINING_RECORD(ModuleEntry, 
-												   LDR_DATA_TABLE_ENTRY, 
-												   InLoadOrderLinks)->SizeOfImage;
+							       LDR_DATA_TABLE_ENTRY, 
+							       InLoadOrderLinks)->SizeOfImage;
 		}
 
 		KeUnstackDetachProcess(&Apc);
@@ -69,10 +69,10 @@ namespace Process {
 		KeStackAttachProcess(eProcess, &Apc);
 
 		NTSTATUS Status{ ZwQueryInformationProcess(ZwCurrentProcess(), 
-												   ProcessBasicInformation, 
-												   &Data->Process.PBI, 
-												   sizeof(Data->Process.PBI),
-												   nullptr) };
+							   ProcessBasicInformation, 
+							   &Data->Process.PBI, 
+							   sizeof(Data->Process.PBI),
+							   nullptr) };
 
 		KeUnstackDetachProcess(&Apc);
 		ObfDereferenceObject(eProcess);
