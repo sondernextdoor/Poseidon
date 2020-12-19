@@ -63,8 +63,8 @@ namespace SharedMemory {
 		do {
 			Sleep(10);
 		} while (GetCode() != Complete 
-				 || GetStatus() != Active 
-				 || Queue >= 1);
+			 || GetStatus() != Active 
+			 || Queue >= 1);
 
 		PushQueue();
 
