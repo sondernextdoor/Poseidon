@@ -166,7 +166,7 @@ public:
 
 	BYTE* RelativeAddress(BYTE* DestinationAddress, BYTE* SourceAddress, DWORD InstructionLength) {
 		return reinterpret_cast<BYTE*>(reinterpret_cast<uint64_t>(SourceAddress) 
-									  - InstructionLength 
-									  - reinterpret_cast<uint64_t>(DestinationAddress));
+					       - InstructionLength 
+					       - reinterpret_cast<uint64_t>(DestinationAddress));
 	}
 };
