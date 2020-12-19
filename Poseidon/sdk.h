@@ -26,7 +26,6 @@ namespace Driver {
 
 				gFunc = (DWORD64)(Func = (BYTE*)Func + *(INT*)((BYTE*)Func + 3) + 7);
 				*(PVOID*)&EnumerateDebuggingDevicesOriginal = InterlockedExchangePointer((PVOID*)Func, (PVOID)EnumerateDebuggingDevicesHook);
-				DbgPrint("%s:", "[ + ] Driver Loaded, Function Hooked!");
 				return STATUS_SUCCESS;
 			}
 		}  
