@@ -15,12 +15,12 @@ namespace Memory {
 	BOOLEAN Copy(PVOID Destination, PVOID Source, SIZE_T Size) {
 		SIZE_T BytesRead{ 0 };
 		return NT_SUCCESS(MmCopyVirtualMemory(IoGetCurrentProcess(), 
-											  Source, 
-											  IoGetCurrentProcess(), 
-											  Destination, 
-											  Size, 
-											  KernelMode, 
-											  &BytesRead)) && BytesRead == Size;
+						      Source, 
+						      IoGetCurrentProcess(), 
+						      Destination, 
+						      Size, 
+						      KernelMode, 
+						      &BytesRead)) && BytesRead == Size;
 	}
 
 	NTSTATUS CopyVirtualMemory(OperationData* Data) {
@@ -33,20 +33,20 @@ namespace Memory {
 
 		if (Data->Memory.Copy.ReadOperation) {
 			Status = MmCopyVirtualMemory(eProcess, 
-										 Data->Memory.Copy.Address, 
-										 IoGetCurrentProcess(), 
-										 Data->Memory.Copy.Buffer, 
-										 Data->Memory.Size, 
-										 UserMode, 
-										 &Data->Memory.ReturnLength);
+						     Data->Memory.Copy.Address, 
+						     IoGetCurrentProcess(), 
+						     Data->Memory.Copy.Buffer, 
+						     Data->Memory.Size, 
+						     UserMode, 
+						     &Data->Memory.ReturnLength);
 		} else {
 			Status = MmCopyVirtualMemory(IoGetCurrentProcess(), 
-										 Data->Memory.Copy.Buffer,
-										 eProcess, 
-										 Data->Memory.Copy.Address, 
-										 Data->Memory.Size, 
-										 UserMode, 
-										 &Data->Memory.ReturnLength);
+						     Data->Memory.Copy.Buffer,
+						     eProcess, 
+						     Data->Memory.Copy.Address, 
+						     Data->Memory.Size, 
+						     UserMode, 
+						     &Data->Memory.ReturnLength);
 		}
 
 		ObfDereferenceObject(eProcess);
@@ -64,11 +64,11 @@ namespace Memory {
 		KeStackAttachProcess(eProcess, &Apc);
 
 		NTSTATUS Status{ ZwAllocateVirtualMemory(ZwCurrentProcess(), 
-												 &Data->Memory.Base, 
-												 NULL, 
-												 &Data->Memory.Size,
-												 Data->Memory.AllocType,
-												 Data->Memory.Protect) };
+							 &Data->Memory.Base, 
+							 NULL, 
+							 &Data->Memory.Size,
+							 Data->Memory.AllocType,
+							 Data->Memory.Protect) };
 
 		KeUnstackDetachProcess(&Apc);
 		ObfDereferenceObject(eProcess);
@@ -86,9 +86,9 @@ namespace Memory {
 		KeStackAttachProcess(eProcess, &Apc);
 
 		NTSTATUS Status{ ZwFreeVirtualMemory(ZwCurrentProcess(),
-											 &Data->Memory.Base,
-											 &Data->Memory.Size,
-											 Data->Memory.FreeType) };
+						     &Data->Memory.Base,
+						     &Data->Memory.Size,
+						     Data->Memory.FreeType) };
 
 		KeUnstackDetachProcess(&Apc);
 		ObfDereferenceObject(eProcess);
@@ -106,10 +106,10 @@ namespace Memory {
 		KeStackAttachProcess(eProcess, &Apc);
 
 		NTSTATUS Status{ ZwProtectVirtualMemory(ZwCurrentProcess(), 
-												&Data->Memory.Base, 
-												&Data->Memory.Size,
-												Data->Memory.Protect,
-												&Data->Memory.OldProtect) };
+							&Data->Memory.Base, 
+							&Data->Memory.Size,
+							Data->Memory.Protect,
+							&Data->Memory.OldProtect) };
 
 		KeUnstackDetachProcess(&Apc);
 		ObfDereferenceObject(eProcess);
@@ -128,11 +128,11 @@ namespace Memory {
 		KeStackAttachProcess(eProcess, &Apc);
 
 		Status = ZwQueryVirtualMemory(ZwCurrentProcess(), 
-									  Data->Memory.Base,
-									  MemoryBasicInformation, 
-									  &Data->Memory.MBI, 
-									  sizeof(Data->Memory.MBI),
-									  &Data->Memory.ReturnLength);
+					      Data->Memory.Base,
+					      MemoryBasicInformation, 
+					      &Data->Memory.MBI, 
+					      sizeof(Data->Memory.MBI),
+					      &Data->Memory.ReturnLength);
 
 		KeUnstackDetachProcess(&Apc);
 		ObfDereferenceObject(eProcess);
