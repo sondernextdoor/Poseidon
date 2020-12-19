@@ -5,16 +5,15 @@ namespace Driver {
 
 	INT64 NTAPI EnumerateDebuggingDevicesHook(PVOID A1, PINT64 A2) {
 		if (ExGetPreviousMode() != UserMode
-			|| A1 == nullptr 
-			|| !Utils::ProbeUserAddress(A1, sizeof(gData), sizeof(DWORD)) 
-			|| !Memory::Copy(&gData, A1, sizeof(CommunicationData))
-			|| gData.Magic != 0x999) {
+		    || A1 == nullptr 
+		    || !Utils::ProbeUserAddress(A1, sizeof(gData), sizeof(DWORD)) 
+		    || !Memory::Copy(&gData, A1, sizeof(CommunicationData))
+		    || gData.Magic != 0x999) {
 		
 			return EnumerateDebuggingDevicesOriginal(A1, A2);
 		} 
 
 		InterlockedExchangePointer((PVOID*)gFunc, (PVOID)EnumerateDebuggingDevicesOriginal);
-		DbgPrint("%s:", "[ + ] Function Unhooked!");
 		System::ClearPiDDBCache(L"iqvw64e.sys", gKernelBase);
 		SharedMemory::Loop();
 	}
