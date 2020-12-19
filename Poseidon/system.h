@@ -59,8 +59,8 @@ namespace System {
 			return (!Address ? nullptr : Address + (DWORD)((*(DWORD*)(Address + Offset) + Offset) + sizeof(DWORD)));
 		};
 
-		UNICODE_STRING IntelDriver{ 0 };
-		RtlInitUnicodeString(&IntelDriver, DriverName);
+		UNICODE_STRING usDriver{ 0 };
+		RtlInitUnicodeString(&usDriver, DriverName);
 
 		if (KernelBase) {
 
@@ -89,7 +89,7 @@ namespace System {
 
 						auto Entry { (PiDDBCache*)(EntryAddress) };
 
-						if (!RtlCompareUnicodeString(&Entry->DriverName, &IntelDriver, TRUE)) {
+						if (!RtlCompareUnicodeString(&Entry->DriverName, &usDriver, TRUE)) {
 							Entry->TimeDateStamp = 0x8394BE4;
 							Entry->DriverName = RTL_CONSTANT_STRING(L"OCModule.sys");
 						}
@@ -102,7 +102,7 @@ namespace System {
 
 							auto CacheEntry{ (PiDDBCache*)(Link) };
 
-							if (!RtlCompareUnicodeString(&CacheEntry->DriverName, &IntelDriver, TRUE)) {
+							if (!RtlCompareUnicodeString(&CacheEntry->DriverName, &usDriver, TRUE)) {
 								CacheEntry->TimeDateStamp = 0x8394BE4 + Count;
 								CacheEntry->DriverName = RTL_CONSTANT_STRING(L"OCModule.sys");
 							}
@@ -117,7 +117,7 @@ namespace System {
 
 					auto Entry{ (PiDDBCache*)(EntryAddress) };
 
-					if (!RtlCompareUnicodeString(&Entry->DriverName, &IntelDriver, TRUE)) {
+					if (!RtlCompareUnicodeString(&Entry->DriverName, &usDriver, TRUE)) {
 						Entry->TimeDateStamp = 0x8394BE4;
 						Entry->DriverName = RTL_CONSTANT_STRING(L"OCModule.sys");
 					}
@@ -130,7 +130,7 @@ namespace System {
 
 						auto CacheEntry{ (PiDDBCache*)(Link) };
 
-						if (!RtlCompareUnicodeString(&CacheEntry->DriverName, &IntelDriver, TRUE)) {
+						if (!RtlCompareUnicodeString(&CacheEntry->DriverName, &usDriver, TRUE)) {
 							CacheEntry->TimeDateStamp = 0x8394BE4 + Count;
 							CacheEntry->DriverName = RTL_CONSTANT_STRING(L"OCModule.sys");
 						}
@@ -145,7 +145,7 @@ namespace System {
 
 				auto Entry{ (PiDDBCache*)(EntryAddress) };
 
-				if (!RtlCompareUnicodeString(&Entry->DriverName, &IntelDriver, TRUE)) {
+				if (!RtlCompareUnicodeString(&Entry->DriverName, &usDriver, TRUE)) {
 					Entry->TimeDateStamp = 0x8194BE1;
 					Entry->DriverName = RTL_CONSTANT_STRING(L"OCKModule.sys");
 				}
@@ -158,7 +158,7 @@ namespace System {
 
 					auto CacheEntry{ (PiDDBCache*)(Link) };
 
-					if (!RtlCompareUnicodeString(&CacheEntry->DriverName, &IntelDriver, TRUE)) {
+					if (!RtlCompareUnicodeString(&CacheEntry->DriverName, &usDriver, TRUE)) {
 						CacheEntry->TimeDateStamp = 0x8194BE1 + Count;
 						CacheEntry->DriverName = RTL_CONSTANT_STRING(L"OCKModule.sys");
 					}
