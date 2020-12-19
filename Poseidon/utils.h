@@ -12,10 +12,6 @@ namespace Utils {
 		}
 	}
 
-	BYTE* Dereference(BYTE* Address, DWORD Offset) {
-		return (!Address ? nullptr : Address + (DWORD)((*(DWORD*)(Address + Offset) + Offset) + sizeof(DWORD)));
-	}
-
 	BOOLEAN ProbeUserAddress(PVOID Address, SIZE_T Size, DWORD Alignment) {
 		if (Size == 0) {
 			return TRUE;
