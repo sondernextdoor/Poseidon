@@ -10,9 +10,9 @@ namespace System {
 		DWORD RequiredSize{ 0 };
 
 		if (ZwQuerySystemInformation(SystemModuleInformation, 
-									 nullptr,
-									 NULL,
-									 &RequiredSize) != STATUS_INFO_LENGTH_MISMATCH) {
+				             nullptr,
+					     NULL,
+					     &RequiredSize) != STATUS_INFO_LENGTH_MISMATCH) {
 
 			return reinterpret_cast<T>(nullptr);
 		}
@@ -24,9 +24,9 @@ namespace System {
 		}
 
 		if (!NT_SUCCESS(ZwQuerySystemInformation(SystemModuleInformation, 
-												 Modules, 
-												 RequiredSize, 
-												 nullptr))) {
+							 Modules, 
+							 RequiredSize, 
+							 nullptr))) {
 			Memory::Free(Modules);
 			return reinterpret_cast<T>(nullptr);
 		}
@@ -66,9 +66,9 @@ namespace System {
 
 			auto PiDDBCacheTable{ 
 				(PRTL_AVL_TABLE)Dereference((BYTE*)Utils::FindPatternImage(KernelBase, 
-											"\x48\x8D\x0D\x00\x00\x00\x00\x4C\x89\x35\x00\x00\x00\x00\x49\x8B\xE9", 
-											"xxx????xxx????xxx"), 
-											3) };
+											   "\x48\x8D\x0D\x00\x00\x00\x00\x4C\x89\x35\x00\x00\x00\x00\x49\x8B\xE9", 
+											   "xxx????xxx????xxx"), 
+											   3) };
 
 			if (!PiDDBCacheTable) {
 				PiDDBCacheTable = (PRTL_AVL_TABLE)Dereference((BYTE*)Utils::FindPatternImage(KernelBase, 
@@ -92,7 +92,6 @@ namespace System {
 						if (!RtlCompareUnicodeString(&Entry->DriverName, &IntelDriver, TRUE)) {
 							Entry->TimeDateStamp = 0x8394BE4;
 							Entry->DriverName = RTL_CONSTANT_STRING(L"OCModule.sys");
-							DbgPrint("%s:", "[+] Cache Cleared!");
 						}
 
 						DWORD Count{ 0 };
@@ -106,7 +105,6 @@ namespace System {
 							if (!RtlCompareUnicodeString(&CacheEntry->DriverName, &IntelDriver, TRUE)) {
 								CacheEntry->TimeDateStamp = 0x8394BE4 + Count;
 								CacheEntry->DriverName = RTL_CONSTANT_STRING(L"OCModule.sys");
-								DbgPrint("%s:", "[+] Cache Cleared!");
 							}
 						}
 					}
@@ -122,7 +120,6 @@ namespace System {
 					if (!RtlCompareUnicodeString(&Entry->DriverName, &IntelDriver, TRUE)) {
 						Entry->TimeDateStamp = 0x8394BE4;
 						Entry->DriverName = RTL_CONSTANT_STRING(L"OCModule.sys");
-						DbgPrint("%s:", "[+] Cache Cleared!");
 					}
 
 					DWORD Count{ 0 };
@@ -136,7 +133,6 @@ namespace System {
 						if (!RtlCompareUnicodeString(&CacheEntry->DriverName, &IntelDriver, TRUE)) {
 							CacheEntry->TimeDateStamp = 0x8394BE4 + Count;
 							CacheEntry->DriverName = RTL_CONSTANT_STRING(L"OCModule.sys");
-							DbgPrint("%s:", "[+] Cache Cleared!");
 						}
 					}
 				}
@@ -152,7 +148,6 @@ namespace System {
 				if (!RtlCompareUnicodeString(&Entry->DriverName, &IntelDriver, TRUE)) {
 					Entry->TimeDateStamp = 0x8194BE1;
 					Entry->DriverName = RTL_CONSTANT_STRING(L"OCKModule.sys");
-					DbgPrint("%s:", "[+] Cache Cleared!");
 				}
 
 				DWORD Count{ 0 };
@@ -166,7 +161,6 @@ namespace System {
 					if (!RtlCompareUnicodeString(&CacheEntry->DriverName, &IntelDriver, TRUE)) {
 						CacheEntry->TimeDateStamp = 0x8194BE1 + Count;
 						CacheEntry->DriverName = RTL_CONSTANT_STRING(L"OCKModule.sys");
-						DbgPrint("%s:", "[+] Cache Cleared!");
 					}
 				}
 			}
