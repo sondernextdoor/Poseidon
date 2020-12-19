@@ -1,0 +1,89 @@
+;
+; Poseidon.inf
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=Sample ; TODO: edit Class
+ClassGuid={78A1C341-4539-11d3-B88D-00C04FAD5171} ; TODO: edit ClassGuid
+Provider=%ManufacturerName%
+CatalogFile=Poseidon.cat
+DriverVer = 12/19/2020,1.54.10.323
+
+[DestinationDirs]
+DefaultDestDir = 12
+Poseidon_Device_CoInstaller_CopyFiles = 11
+
+; ================= Class section =====================
+
+[ClassInstall32]
+Addreg=SampleClassReg
+
+[SampleClassReg]
+HKR,,,0,%ClassName%
+HKR,,Icon,,-5
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+Poseidon.sys  = 1,,
+;
+
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NT
+
+[Standard.NT]
+%Poseidon.DeviceDesc%=Poseidon_Device, Root\Poseidon ; TODO: edit hw-id
+
+[Poseidon_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+Poseidon.sys
+
+;-------------- Service installation
+[Poseidon_Device.NT.Services]
+AddService = Poseidon,%SPSVCINST_ASSOCSERVICE%, Poseidon_Service_Inst
+
+; -------------- Poseidon driver install sections
+[Poseidon_Service_Inst]
+DisplayName    = %Poseidon.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\Poseidon.sys
+
+;
+;--- Poseidon_Device Coinstaller installation ------
+;
+
+[Poseidon_Device.NT.CoInstallers]
+AddReg=Poseidon_Device_CoInstaller_AddReg
+CopyFiles=Poseidon_Device_CoInstaller_CopyFiles
+
+[Poseidon_Device_CoInstaller_AddReg]
+;
+
+
+[Poseidon_Device_CoInstaller_CopyFiles]
+;
+
+
+[Poseidon_Device.NT.Wdf]
+KmdfService =  Poseidon, Poseidon_wdfsect
+[Poseidon_wdfsect]
+KmdfLibraryVersion = 1.15
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="<Your manufacturer name>" ;TODO: Replace with your manufacturer name
+ClassName="Samples" ; TODO: edit ClassName
+DiskName = "Poseidon Installation Disk"
+Poseidon.DeviceDesc = "Poseidon Device"
+Poseidon.SVCDESC = "Poseidon Service"

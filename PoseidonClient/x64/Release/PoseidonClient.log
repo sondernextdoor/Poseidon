@@ -1,0 +1,14 @@
+﻿  main.cpp
+C:\Users\junos\Downloads\SharedMemory-main\SharedMemory-main\PoseidonClient\global.h(66,2): warning C4091: 'typedef ': ignored on left of 'OperationData' when no variable is declared
+C:\Users\junos\Downloads\SharedMemory-main\SharedMemory-main\PoseidonClient\global.h(75,2): warning C4091: 'typedef ': ignored on left of 'CommunicationData' when no variable is declared
+C:\Users\junos\Downloads\SharedMemory-main\SharedMemory-main\PoseidonClient\global.h(80,2): warning C4091: 'typedef ': ignored on left of 'MODULE' when no variable is declared
+C:\Users\junos\Downloads\SharedMemory-main\SharedMemory-main\PoseidonClient\sharedmemory.h(20,61): warning C4311: 'reinterpret_cast': pointer truncation from 'void *' to 'BOOL'
+C:\Users\junos\Downloads\SharedMemory-main\SharedMemory-main\PoseidonClient\sharedmemory.h(20,61): warning C4302: 'reinterpret_cast': truncation from 'void *' to 'BOOL'
+C:\Users\junos\Downloads\SharedMemory-main\SharedMemory-main\PoseidonClient\process.h(38,44): warning C4244: 'return': conversion from 'SIZE_T' to 'DWORD', possible loss of data
+C:\Users\junos\Downloads\SharedMemory-main\SharedMemory-main\PoseidonClient\process.h(99,27): warning C4244: '=': conversion from 'SIZE_T' to 'DWORD', possible loss of data
+C:\Users\junos\Downloads\SharedMemory-main\SharedMemory-main\PoseidonClient\sdk.h(79,21): warning C4018: '<': signed/unsigned mismatch
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 9 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  PoseidonClient.vcxproj -> C:\Users\junos\Downloads\SharedMemory-main\SharedMemory-main\Poseidon\x64\Release\Client.exe

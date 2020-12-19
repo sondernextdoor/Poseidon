@@ -1,0 +1,31 @@
+﻿  Building 'Poseidon' with toolset 'WindowsKernelModeDriver10.0' and the 'Universal' target platform.
+  Stamping x64\Release\Poseidon.inf
+  Stamping [Version] section with DriverVer=12/19/2020,1.54.10.323
+C:\Users\junos\Downloads\SharedMemory-main\SharedMemory-main\Poseidon\Poseidon.inf(41-41): warning 2083: Section [standard.nt] not referenced or used.
+C:\Users\junos\Downloads\SharedMemory-main\SharedMemory-main\Poseidon\Poseidon.inf(44-44): warning 2083: Section [poseidon_device.nt] not referenced or used.
+C:\Users\junos\Downloads\SharedMemory-main\SharedMemory-main\Poseidon\Poseidon.inf(47-47): warning 2083: Section [drivers_dir] not referenced or used.
+C:\Users\junos\Downloads\SharedMemory-main\SharedMemory-main\Poseidon\Poseidon.inf(51-51): warning 2083: Section [poseidon_device.nt.services] not referenced or used.
+C:\Users\junos\Downloads\SharedMemory-main\SharedMemory-main\Poseidon\Poseidon.inf(55-55): warning 2083: Section [poseidon_service_inst] not referenced or used.
+C:\Users\junos\Downloads\SharedMemory-main\SharedMemory-main\Poseidon\Poseidon.inf(66-66): warning 2083: Section [poseidon_device.nt.coinstallers] not referenced or used.
+C:\Users\junos\Downloads\SharedMemory-main\SharedMemory-main\Poseidon\Poseidon.inf(70-70): warning 2083: Section [poseidon_device_coinstaller_addreg] not referenced or used.
+C:\Users\junos\Downloads\SharedMemory-main\SharedMemory-main\Poseidon\Poseidon.inf(74-74): warning 2083: Section [poseidon_device_coinstaller_copyfiles] not referenced or used.
+C:\Users\junos\Downloads\SharedMemory-main\SharedMemory-main\Poseidon\Poseidon.inf(78-78): warning 2083: Section [poseidon_device.nt.wdf] not referenced or used.
+C:\Users\junos\Downloads\SharedMemory-main\SharedMemory-main\Poseidon\Poseidon.inf(80-80): warning 2083: Section [poseidon_wdfsect] not referenced or used.
+  main.cpp
+C:\Users\junos\Downloads\SharedMemory-main\SharedMemory-main\Poseidon\global.h(63,2): warning C4091: 'typedef ': ignored on left of 'OperationData' when no variable is declared
+C:\Users\junos\Downloads\SharedMemory-main\SharedMemory-main\Poseidon\global.h(72,2): warning C4091: 'typedef ': ignored on left of 'CommunicationData' when no variable is declared
+C:\Users\junos\Downloads\SharedMemory-main\SharedMemory-main\Poseidon\global.h(225,2): warning C4091: 'typedef ': ignored on left of 'PiDDBCache' when no variable is declared
+C:\Users\junos\Downloads\SharedMemory-main\SharedMemory-main\Poseidon\process.h(27,9): warning C4189: 'Size': local variable is initialized but not referenced
+C:\Users\junos\Downloads\SharedMemory-main\SharedMemory-main\Poseidon\process.h(84,9): warning C4189: 'Base': local variable is initialized but not referenced
+C:\Users\junos\Downloads\SharedMemory-main\SharedMemory-main\Poseidon\process.h(85,9): warning C4189: 'Size': local variable is initialized but not referenced
+C:\Users\junos\Downloads\SharedMemory-main\SharedMemory-main\Poseidon\sharedmemory.h(43,50): warning C4244: 'argument': conversion from 'Status' to 'T', possible loss of data
+          with
+          [
+              T=SHORT
+          ]
+C:\Users\junos\Downloads\SharedMemory-main\SharedMemory-main\Poseidon\main.cpp(3,67): warning C4100: 'RegistryPath': unreferenced formal parameter
+C:\Users\junos\Downloads\SharedMemory-main\SharedMemory-main\Poseidon\main.cpp(3,37): warning C4100: 'DriverObject': unreferenced formal parameter
+C:\Users\junos\Downloads\SharedMemory-main\SharedMemory-main\Poseidon\sdk.h(20): warning C4715: 'Driver::EnumerateDebuggingDevicesHook': not all control paths return a value
+C:\Users\junos\Downloads\SharedMemory-main\SharedMemory-main\Poseidon\sdk.h(23): warning C4706: assignment within conditional expression
+  Poseidon.vcxproj -> C:\Users\junos\Downloads\SharedMemory-main\SharedMemory-main\Poseidon\x64\Release\driver.sys
+  Driver is a Universal Driver.
