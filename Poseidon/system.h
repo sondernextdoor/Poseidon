@@ -5,7 +5,7 @@
 namespace System {
 
 	template <typename T = PVOID>
-	T GetModuleInfo(const CHAR* Name, DWORD* OutSize = nullptr) {
+	T GetModuleInfo(const char* Name, DWORD* OutSize = nullptr) {
 		PVOID Base{ nullptr };
 		DWORD RequiredSize{ 0 };
 
