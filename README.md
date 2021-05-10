@@ -4,10 +4,12 @@ stealthy UM <-> KM communication system without creating any system threads, per
 
 Process:
 
-- Hook a function in ntoskrnl
-- Create a thread and call that function in user-mode, trapping the thread in kernel-space
-- Unhook in hooked function and enter a shared memory loop
-- Shared memory is manually implemented. Memory is allocated in the user-mode process and indexed via custom data structures
+- In our driver, we hook a function in ntoskrnl
+- In usermode, we manually allocate memory and index it via custom data structures
+- We then create a thread in usermode and call the hooked functions corresponding usermode-accessible function
+- When the correct magic number is passed to the function, the driver will know it's us, and will then unhook and enter a shared memory loop, trapping our usermode thread in the kernel until we choose to break out of the loop
+
+As long as this is set up prior to any anti-cheat system being active on your system, you can communicate with the driver without being detected by the various security measures employed by invasive anti-cheat technologies such as BattlEye and EasyAntiCheat. No illicit threads, hooks or objects related to communication will be detected by their current methods.
 
 Limitations:
 
@@ -16,4 +18,6 @@ Limitations:
 - Not designed with safety as a priority
 
 
-It's meant to be manually mapped by exploiting Intel's vulernable network adapter diagnostic driver, iqvw64e.sys
+It's meant to be manually mapped by exploiting Intel's vulnerable network adapter diagnostic driver, iqvw64e.sys
+
+This was created for fun, I do not condone the use of this code in any program that violates the integrity of any online game. This should only be used for learning purposes or to prevent custom software from being falsely detected as a cheat.
