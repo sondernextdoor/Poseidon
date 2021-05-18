@@ -53,6 +53,12 @@ int main() {
 You can either call the functions in memory.h and process.h manually, or you can just create a KProcess object for easier use. KProcess features are as follows:
 
 ```
+
+	// Make a process object for your target process
+	
+	KProcess Notepad(L"notepad.exe")
+	
+	
         // Read Memory
 
 	int Value = Notepad.Read<int>((PVOID)0xDEADBEEF);
