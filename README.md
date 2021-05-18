@@ -56,7 +56,7 @@ You can either call the functions in memory.h and process.h manually, or you can
 
 	// Make a process object for your target process
 	
-	KProcess Notepad(L"notepad.exe")
+	KProcess Notepad(L"notepad.exe");
 	
 	
         // Read Memory
