@@ -103,12 +103,12 @@ You can either call the functions in memory.h and process.h manually, or you can
 	Notepad.PatternFinder(BYTE* Start, DWORD Size, const char* Signature, const char* Mask);
 
 
-	// Get absolute address of specified asm instruction
+	// Get absolute address within specified asm instruction
 
 	Notepad.AbsoluteAddress(BYTE* Rip, DWORD InstructionLength);
 
 
-	// Get relative address of specified asm instruction
+	// Get relative address within specified asm instruction
 
 	Notepad.RelativeAddress(BYTE* DestinationAddress, BYTE* SourceAddress, DWORD InstructionLength);
 
