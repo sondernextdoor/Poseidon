@@ -6,7 +6,7 @@ Process:
 
 - In our driver, we hook a function in ntoskrnl
 - In usermode, we manually allocate memory and index it via custom data structures
-- We then create a thread in usermode and call the hooked functions corresponding usermode-accessible function
+- We then create a thread in usermode and call the hooked function's corresponding usermode-accessible function
 - When the correct magic number is passed to the function, the driver will know it's us, and will then unhook and enter a shared memory loop, trapping our usermode thread in the kernel until we choose to break out of the loop
 
 As long as this is set up prior to any anti-cheat being active on your system, you can communicate with the driver without being detected by the various security measures employed by invasive anti-cheat technologies such as BattlEye and EasyAntiCheat. No illicit threads, hooks or objects related to communication will be detected by their current methods.
