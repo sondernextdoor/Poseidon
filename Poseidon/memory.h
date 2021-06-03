@@ -57,7 +57,7 @@ namespace Memory {
 		KAPC_STATE Apc{ NULL };
 		PEPROCESS eProcess{ Process::GetProcess(Data->Process.Id) };
 
-		if (!eProcess) {
+		if (eProcess == nullptr) {
 			return STATUS_UNSUCCESSFUL;
 		}
 
@@ -79,7 +79,7 @@ namespace Memory {
 		KAPC_STATE Apc{ NULL };
 		PEPROCESS eProcess{ Process::GetProcess(Data->Process.Id) };
 
-		if (!eProcess) {
+		if (eProcess == nullptr) {
 			return STATUS_UNSUCCESSFUL;
 		}
 
@@ -99,7 +99,7 @@ namespace Memory {
 		KAPC_STATE Apc{ NULL };
 		PEPROCESS eProcess{ Process::GetProcess(Data->Process.Id) };
 
-		if (!eProcess) {
+		if (eProcess == nullptr) {
 			return STATUS_UNSUCCESSFUL;
 		}
 
