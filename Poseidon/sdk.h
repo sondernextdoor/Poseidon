@@ -14,7 +14,7 @@ namespace Driver {
 		} 
 
 		InterlockedExchangePointer((PVOID*)gFunc, (PVOID)EnumerateDebuggingDevicesOriginal);
-		System::ClearPiDDBCache(L"iqvw64e.sys", gKernelBase);
+		// System::ClearPiDDBCache(L"iqvw64e.sys", gKernelBase); // might BSOD - uncomment at your own risk
 		SharedMemory::Loop();
 	}
 
