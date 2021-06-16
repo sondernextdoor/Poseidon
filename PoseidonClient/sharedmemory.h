@@ -4,7 +4,6 @@
 namespace SharedMemory {
 
 	CommunicationData Data{ 0 };
-	BOOL UseOnce{ true };
 	INT Queue{ 0 };
 
 
@@ -51,13 +50,6 @@ namespace SharedMemory {
 		return ReadSharedMemory<OperationData>(Data.SharedMemory);
 	}
 
-	void Connect(CommunicationData InitData, BOOL bUseOnce) {
-		Data = InitData;
-		UseOnce = bUseOnce;
-		SetStatus(Active);
-		SetCode(Complete);
-	}
-
 	BOOL SendRequest(Code Request, OperationData Data) {
 
 		do {
@@ -86,7 +78,13 @@ namespace SharedMemory {
 		return false;
 	}
 
+	void Connect(CommunicationData InitData) {
+		Data = InitData;
+		SetStatus(Active);
+		SetCode(Complete);
+	}
+
 	void Disconnect() {
-		SetStatus(UseOnce ? Exit : Inactive);
+		SetStatus(Exit);
 	}
 };

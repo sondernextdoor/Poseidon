@@ -22,11 +22,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Inf Include="Poseidon.inf">
-      <Filter>Driver Files</Filter>
-    </Inf>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

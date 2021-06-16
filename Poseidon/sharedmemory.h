@@ -141,12 +141,19 @@ namespace SharedMemory {
 
 	VOID Loop() {
 		gProcess = Process::GetProcess(gData.ProcessId);
-	
+
 		if (gProcess == nullptr) {
 			return;
 		}
 
 		for (;;) {
+
+			if (*(DWORD*)((BYTE*)gProcess + ActiveThreadsOffset) == 1) {
+				// We're the only active thread - the client must be trying to terminate
+				ObfDereferenceObject(gProcess);
+				return;
+			}
+
 			DWORD Status{ GetStatus() };
 
 			switch (Status) {

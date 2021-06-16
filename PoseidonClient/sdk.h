@@ -2,7 +2,7 @@
 #include "memory.h"
 
 namespace Client {
-	bool InitFlag{ false };
+	bool ErrorFlag{ false };
 
 	void KernelThread(PVOID LParam) {
 		INT64 Status{ 0 };
@@ -23,14 +23,10 @@ namespace Client {
 		}
 
 		NtConvertBetweenAuxiliaryCounterAndPerformanceCounter((PVOID)1, &pData, &Status, nullptr);
+		ErrorFlag = true;
 	}
 
-	void Connect(bool UseOnce = true) {
-		if (InitFlag == true) {
-			return;
-		}
-
-		InitFlag = true;
+	void Connect() {
 		CommunicationData Data{ 0 };
 
 		PVOID Memory{ VirtualAlloc(nullptr, 
@@ -49,7 +45,16 @@ namespace Client {
 		Data.Magic = 0x999;
 
 		CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)KernelThread, &Data, 0, nullptr);
-		SharedMemory::Connect(Data, UseOnce);
+
+		Sleep(1000);
+
+		if (ErrorFlag) {
+			std::cout << "Error Connecting";
+			getchar();
+			exit(0);
+		}
+
+		SharedMemory::Connect(Data);
 	}
 
 	void Disconnect() {

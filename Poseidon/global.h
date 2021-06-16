@@ -76,6 +76,7 @@ CommunicationData gData{};
 PEPROCESS gProcess{};
 DWORD64 gFunc{};
 CHAR* gKernelBase{};
+DWORD ActiveThreadsOffset{ 0x5F0 };
 
 typedef enum _SYSTEM_INFORMATION_CLASS 
 {
@@ -223,7 +224,6 @@ typedef struct PiDDBCache
 	NTSTATUS		LoadStatus;
 	char			_0x0028[16];
 };
-
 
 extern "C" 
 {

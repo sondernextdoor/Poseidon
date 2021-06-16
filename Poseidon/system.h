@@ -50,6 +50,12 @@ namespace System {
 		return reinterpret_cast<T>(Base);
 	}
 
+	OSVERSIONINFOW GetOSVersion() {
+		OSVERSIONINFOW OSInfo{ 0 };
+		RtlGetVersion(&OSInfo);
+		return OSInfo;
+	}
+
 	VOID ClearPiDDBCache(wchar_t* DriverName, char* KernelBase) {
 		if (!DriverName) {
 			return;

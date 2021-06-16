@@ -124,7 +124,6 @@ namespace Process {
 		return Data->Module.SizeOfImage ? STATUS_SUCCESS : STATUS_UNSUCCESSFUL;
 	}
 
-
 	NTSTATUS GetModuleInfoByIndex(OperationData* Data) {
 		KAPC_STATE Apc{ 0 };
 		int Count{ 0 };
