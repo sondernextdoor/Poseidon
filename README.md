@@ -16,7 +16,8 @@ Limitations:
 - Dodgy synchronization
 - Not many kernel features, just basic remote-process operability
 - Not designed with safety as a priority
-- Only tested on Windows 10 1909
+- Only tested on Windows 10 20H2
+- The client can only be used once. If you terminate it or call Client::Disconnect(), you'll need to remap the driver
 
 
 It's meant to be manually mapped by exploiting Intel's vulnerable network adapter diagnostic driver, iqvw64e.sys
