@@ -101,4 +101,20 @@ namespace Process {
 
 		return Base;
 	}
+
+	PVOID GetModuleByName(DWORD ProcessId, std::string Name, DWORD& OutSize) {
+		PVOID Base{ nullptr };
+		OperationData Data{ 0 };
+
+		Data.Process.Id = ProcessId;
+		Data.Module.Name = Name.c_str();
+
+		if (SharedMemory::SendRequest(NameRequest, Data)) {
+			OperationData Buffer{ SharedMemory::GetBuffer() };
+			Base = Buffer.Module.BaseAddress;
+			OutSize = Buffer.Module.SizeOfImage;
+		}
+
+		return Base;
+	}
 }

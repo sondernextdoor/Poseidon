@@ -154,4 +154,46 @@ namespace Process {
 		ObfDereferenceObject(eProcess);
 		return STATUS_SUCCESS;
 	}
+
+	NTSTATUS GetModuleInfoByName(OperationData* Data) {
+		KAPC_STATE Apc{ 0 };
+		int Count{ 0 };
+		PEPROCESS eProcess{ GetProcess(Data->Process.Id) };
+
+		if (eProcess == nullptr) {
+			return STATUS_UNSUCCESSFUL;
+		}
+
+		ANSI_STRING ansi_string;
+		UNICODE_STRING module_name;
+
+		RtlInitAnsiString(&ansi_string, Data->Module.Name);
+
+		if (!NT_SUCCESS(RtlAnsiStringToUnicodeString(&module_name, &ansi_string, TRUE))) {
+			return STATUS_UNSUCCESSFUL;
+		}
+
+		KeStackAttachProcess(eProcess, &Apc);
+
+
+		LIST_ENTRY* List = &(PsGetProcessPeb(eProcess)->Ldr->InLoadOrderModuleList);
+
+		for (LIST_ENTRY* Entry = List->Flink; Entry != List;) {
+			auto Module{ CONTAINING_RECORD(Entry, LDR_DATA_TABLE_ENTRY, InLoadOrderLinks) };
+
+			if (Module && RtlCompareUnicodeString(&Module->BaseDllName, &module_name, TRUE) == 0) {
+				Data->Module.BaseAddress = Module->DllBase;
+				Data->Module.SizeOfImage = Module->SizeOfImage;
+				break;
+			}
+
+			Entry = Module->InLoadOrderLinks.Flink;
+		}
+
+		KeUnstackDetachProcess(&Apc);
+
+		RtlFreeUnicodeString(&module_name);
+		ObfDereferenceObject(eProcess);
+		return STATUS_SUCCESS;
+	}
 }

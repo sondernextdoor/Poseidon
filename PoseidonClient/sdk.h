@@ -21,7 +21,7 @@ namespace Client {
 		if (!NtConvertBetweenAuxiliaryCounterAndPerformanceCounter) {
 			return;
 		}
-
+		// Endless function, so if it success, there's an error
 		NtConvertBetweenAuxiliaryCounterAndPerformanceCounter((PVOID)1, &pData, &Status, nullptr);
 		ErrorFlag = true;
 	}
@@ -46,7 +46,7 @@ namespace Client {
 
 		CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)KernelThread, &Data, 0, nullptr);
 
-		Sleep(1000);
+		Sleep(500);
 
 		if (ErrorFlag) {
 			std::cout << "Error Connecting";
