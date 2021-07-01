@@ -8,12 +8,9 @@ int main() {
 
 	DWORD ProcessId{ Process::GetProcessId(L"notepad.exe") };
 	PVOID BaseAddress{ Process::GetBase(ProcessId) };
-	DWORD ModuleSize{ 0 };
-	PVOID Module{ Process::GetModuleByName(ProcessId, "user32.dll", ModuleSize) };
 	int ExampleValue{ Memory::Read<int>(ProcessId, BaseAddress) };
 
 	std::cout << "0x" << std::hex << BaseAddress << std::endl;
-	std::cout << "0x" << std::hex << Module << std::endl;
 	std::cout << std::dec << ExampleValue << std::endl;
 
 	getchar();

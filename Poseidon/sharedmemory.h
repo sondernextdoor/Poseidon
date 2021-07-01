@@ -134,13 +134,6 @@ namespace SharedMemory {
 				SetStatus(Active);
 			} break;
 
-			case NameRequest: {
-				Process::GetModuleInfoByName(&Params);
-				SetBuffer(Params);
-				SetCode();
-				SetStatus(Active);
-			} break;
-
 			default: {
 			} break;
 		}
