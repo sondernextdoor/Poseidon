@@ -120,6 +120,7 @@ namespace Process {
 		}
 
 		KeUnstackDetachProcess(&Apc);
+		RtlFreeUnicodeString(&usModule);
 		ObfDereferenceObject(eProcess);
 		return Data->Module.SizeOfImage ? STATUS_SUCCESS : STATUS_UNSUCCESSFUL;
 	}

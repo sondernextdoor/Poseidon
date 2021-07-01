@@ -24,5 +24,5 @@ int main() {
 
 	getchar();
 
-	Client::Disconnect(); // Once this is called, we can never reobtain a connection to the driver without remapping it
+	Client::Disconnect(); // Once this is called or usermode closed / crashed, we can never reobtain a connection to the driver without remapping it
 }
