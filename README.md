@@ -4,7 +4,7 @@ stealthy UM <-> KM communication system without creating any system threads, per
 
 Process:
 
-- In our driver, we hook a function in ntoskrnl
+- In our driver, we hook a function in ntoskrnl (.data pointer swap)
 - In usermode, we manually allocate memory and index it via custom data structures
 - We then create a thread in usermode and call the hooked function's corresponding usermode-accessible function
 - When the correct magic number is passed to the function, the driver will know it's us, and will then unhook and enter a shared memory loop, trapping our usermode thread in the kernel until we choose to break out of the loop
