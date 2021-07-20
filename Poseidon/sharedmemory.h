@@ -76,14 +76,14 @@ namespace SharedMemory {
 				SetBuffer(Params);
 				SetCode();
 				SetStatus(Active);
-			}
+			} break;
 
 			case QIPRequest: {
 				Process::QueryInformation(&Params);
 				SetBuffer(Params);
 				SetCode();
 				SetStatus(Active);
-			}
+			} break;
 
 			case CopyRequest: {
 				Memory::CopyVirtualMemory(&Params);
@@ -118,7 +118,7 @@ namespace SharedMemory {
 				SetBuffer(Params);
 				SetCode();
 				SetStatus(Active);
-			}
+			} break;
 
 			case ModuleRequest: {
 				Process::GetModuleInfo(&Params);

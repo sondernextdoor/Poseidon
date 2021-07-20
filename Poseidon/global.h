@@ -16,7 +16,7 @@ enum Code {
 	PVMRequest,
 	QVMRequest,
 	ModuleRequest,
-	IndexRequest
+	IndexRequest,
 };
 
 enum Status {
@@ -29,7 +29,7 @@ enum Status {
 typedef struct OperationData {
 
 	struct {
-		char*   Name;
+		char* Name;
 		DWORD	Id;
 		PVOID	BaseAddress;
 		SIZE_T  Size;
