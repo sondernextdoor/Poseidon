@@ -39,7 +39,7 @@ namespace Process {
 		} return NULL;
 	}
 
-	template <typename T>
+	template <typename T = PVOID>
 	T GetModuleInfo(DWORD ProcessId, const char* ModuleName, DWORD &OutSize) {
 		OperationData Data{ 0 };
 
