@@ -128,3 +128,10 @@ You can either call the functions in memory.h and process.h manually, or you can
 	Notepad.ProcessId;	 // Process Id
 	Notepad.Size;		 // Main module size
   ```
+
+# If you found this useful, consider buying me a coffee!
+BTC: 3HmX9cGF5fzFSTgSJAG2TDbMg5watPuQvs
+
+ETH: 0xc16650Ea986CB4f0d4156460a6542946bea3aC70
+
+PayPal: nicholasagalioto@gmail.com
