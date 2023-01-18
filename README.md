@@ -1,6 +1,6 @@
 # KM-UM-Communication
 
-stealthy UM <-> KM communication system without creating any system threads, permanent hooks, driver objects, section objects or device objects.
+Stealthy UM <-> KM communication system without creating any system threads, permanent hooks, driver objects, section objects or device objects.
 
 Process:
 
@@ -9,18 +9,20 @@ Process:
 - We then create a thread in usermode and call the hooked function's corresponding usermode-accessible function
 - When the correct magic number is passed to the function, the driver will know it's us, and will then unhook and enter a shared memory loop, trapping our usermode thread in the kernel until we choose to break out of the loop
 
-As long as this is set up prior to any anti-cheat being active on your system, you can communicate with the driver without being detected by the various security measures employed by invasive anti-cheat technologies such as BattlEye and EasyAntiCheat. No illicit threads, hooks or objects related to communication will be detected by their current methods.
+As long as this is set up prior to any anti-cheat being active on your system, you can communicate with the driver without being detected by most of the various security measures employed by invasive anti-cheat technologies such as BattlEye and EasyAntiCheat.
+
+2023 Update: There are quite a few detection vectors that can be identified by BE and EAC, some of which are discussed in (now closed) issues. Most are easy to bypass, but others are a bit more tricky. Having said that, I still have never had any action taken against me for using this for relatively licit purposes (i.e. no aimbot, ESP, or any other blatant violative use), nor has anyone I know who's used it. Regardless, steps should be taken to mitigate any potential detection vectors. I will not be providing any updates or revisions, as this is nearly four years old and there are far superior options to accomplish stealthy communication. This is mainly meant to serve as an interesting, novel communication method that demostrates the potential creativity that can be employed to get around invasive security software, mainly anti-cheat software.
 
 Limitations:
 
 - Dodgy synchronization
 - Not many kernel features, just basic remote-process operability
-- Not designed with safety as a priority
+- Not designed with safety as a priority (i.e. you may well BSOD)
 - Only tested on Windows 10 20H2
 - The client can only be used once. If you terminate it or call Client::Disconnect(), you'll need to remap the driver
 
 
-It's meant to be manually mapped by exploiting Intel's vulnerable network adapter diagnostic driver, iqvw64e.sys
+It's meant to be manually mapped by exploiting Intel's vulnerable network adapter diagnostic driver, iqvw64e.sys (or any other suitable vulernable driver).
 
 This was created for fun, I do not condone the use of this code in any program that violates the integrity of any online game. This should only be used for learning purposes or to prevent custom software from being falsely detected as a cheat.
 
