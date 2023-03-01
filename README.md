@@ -21,10 +21,9 @@ Limitations:
 - Only tested on Windows 10 20H2
 - The client can only be used once. If you terminate it or call Client::Disconnect(), you'll need to remap the driver
 
+The driver is intended to be manually mapped by exploiting Intel's vulnerable network adapter diagnostic driver, iqvw64e.sys (or any other suitable vulernable driver).
 
-It's meant to be manually mapped by exploiting Intel's vulnerable network adapter diagnostic driver, iqvw64e.sys (or any other suitable vulernable driver).
-
-This was created for fun, I do not condone the use of this code in any program that violates the integrity of any online game. This should only be used for learning purposes or to prevent custom software from being falsely detected as a cheat.
+This was created for fun, I do not condone the use of this code in any program that violates the integrity of any online game, nor do I condone the use of this in any malicious software. This should only be used for learning purposes or to prevent custom software from being falsely detected as an illicit program.
 
 Usage:
 
