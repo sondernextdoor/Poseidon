@@ -21,9 +21,9 @@ namespace Client {
 		if (!NtConvertBetweenAuxiliaryCounterAndPerformanceCounter) {
 			return;
 		}
-		// Endless function, so if it success, there's an error
+
 		NtConvertBetweenAuxiliaryCounterAndPerformanceCounter((PVOID)1, &pData, &Status, nullptr);
-		ErrorFlag = true;
+		ErrorFlag = true; // NtConvertBetweenAuxiliaryCounterAndPerformanceCounter() is the call that transitions this thread into the kernel, and as such should not return until Client::Disconnect() is called.
 	}
 
 	void Connect() {
