@@ -22,9 +22,8 @@ namespace Driver {
 		// We're only able to execute code right now because the usermode thread within the client transitioned into the kernel to complete the system call
 		// We can take advantage of this and execute code in our driver for as long as we want by simply never returning
 
-		InterlockedExchangePointer((PVOID*)gFunc, (PVOID)EnumerateDebuggingDevicesOriginal);
-		// Unhook EnumerateDebuggingDevices() - it can be detected easily
-		// But AC won't you ban simply for leaving a hook, they can flag you, but not ban, there's why: https://www.unknowncheats.me/forum/2461143-post15.html
+		InterlockedExchangePointer((PVOID*)gFunc, (PVOID)EnumerateDebuggingDevicesOriginal); // Unhook EnumerateDebuggingDevices() - it can be detected easily
+		
 		SharedMemory::Loop();
 	}
 
