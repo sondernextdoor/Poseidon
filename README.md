@@ -9,10 +9,6 @@ Process:
 - We then create a thread in usermode and call the hooked function's corresponding usermode-accessible function
 - When the correct magic number is passed to the function, the driver will know it's us, and will then unhook and enter a shared memory loop, trapping our usermode thread in the kernel until we choose to break out of the loop
 
-As long as this is set up prior to any anti-cheat being active on your system, you can communicate with the driver without being detected by most of the various security measures employed by invasive anti-cheat technologies such as BattlEye and EasyAntiCheat.
-
-2023 Update: There are quite a few detection vectors that can be identified by BE and EAC, some of which are discussed in (now closed) issues. Most are easy to bypass, but others are a bit more tricky. Having said that, I still have never had any action taken against me for using this for relatively licit purposes (i.e. no aimbot, ESP, or any other blatant violative use), nor has anyone I know who's used it. Regardless, steps should be taken to mitigate any potential detection vectors. I will not be providing any updates or revisions, as this is nearly four years old and there are far superior options to accomplish stealthy communication. This is mainly meant to serve as an interesting, novel communication method that demostrates the potential creativity that can be employed to get around invasive security software, mainly anti-cheat software.
-
 Limitations:
 
 - Dodgy synchronization
